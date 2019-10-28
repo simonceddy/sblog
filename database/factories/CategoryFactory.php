@@ -2,14 +2,13 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Article;
+use App\Category;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
-$factory->define(Article::class, function (Faker $faker) {
+$factory->define(Category::class, function (Faker $faker) {
     return [
         'id' => Str::uuid(),
-        'title' => $faker->words(3, true),
-        'body' => $faker->paragraphs(3, true)
+        'name' => $faker->words(3, true),
     ];
 });

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model
+class Category extends Model
 {
     public $incrementing = false;
 
@@ -15,10 +15,8 @@ class Article extends Model
      */
     protected $keyType = 'string';
 
-    protected $with = ['categories'];
-
-    public function categories()
+    public function articles()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Article::class);
     }
 }
