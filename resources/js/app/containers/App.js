@@ -5,6 +5,8 @@ import Homepage from '../components/pages/Homepage';
 import Categories from './Categories';
 import Articles from './Articles';
 import Article from './Article';
+import Category from './Category';
+// import Login from './Admin/Login';
 
 function App() {
   return (
@@ -13,7 +15,9 @@ function App() {
         <Route path="/" exact component={Homepage} />
         <Route path="/categories" exact component={Categories} />
         <Route path="/articles" exact component={Articles} />
-        <Route path="/article/:id" exact component={Article} />
+        <Route path="/article/:slug" exact component={Article} />
+        <Route path="/category/:slug" exact component={Category} />
+        {/* <Route path="/login" exact component={Login} /> */}
         <Route render={() => <div>404</div>} />
       </Switch>
     </Layout>

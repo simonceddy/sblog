@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 
 $factory->define(Category::class, function (Faker $faker) {
     return [
-        'name' => $faker->words(mt_rand(1, 3), true),
+        'name' => ($name = $faker->jobTitle)/* ->words(mt_rand(1, 2), true) */,
+        'slug' => Str::slug($name)
     ];
 });

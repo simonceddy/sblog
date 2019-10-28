@@ -13,7 +13,7 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Article::class, 50)->create()->each(
+        factory(App\Article::class, 2500)->create()->each(
             function (App\Article $article) {
                 $a = mt_rand(1, 12);
 
@@ -27,7 +27,7 @@ class ArticlesTableSeeder extends Seeder
 
                 // dd($categories);
 
-                $article->categories()->attach($categories);
+                $article->categories()->attach($categories->unique('name'));
             }
         );
     }

@@ -5,12 +5,12 @@ import ViewArticle from '../components/pages/ViewArticle';
 function Article() {
   const [article, setArticle] = useState(null);
 
-  const { id } = useParams();
+  const { slug } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await window.axios.get(`/api/article/${id}`);
-      console.log(result.data);
+      const result = await window.axios.get(`/api/article/${slug}`);
+      // console.log(result.data);
       setArticle(result.data);
     };
     fetchData();

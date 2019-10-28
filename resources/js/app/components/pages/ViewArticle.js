@@ -1,4 +1,8 @@
 import React from 'react';
+import HeadingMd from '../../shared/components/HeadingMd';
+import DateInfo from '../../shared/components/DateInfo';
+import CategoriesList from '../../shared/components/CategoriesList';
+import CategoryBox from '../../shared/components/CategoryBox';
 
 function ViewArticle({ article = {} }) {
   const {
@@ -6,18 +10,27 @@ function ViewArticle({ article = {} }) {
     body,
     created_at: createdAt,
     updated_at: updatedAt,
+    categories = []
   } = article;
+  // console.log(categories);
   return (
     <div className="flex flex-col">
-      <h2 className="py-2 text-2xl capitalize">{title}</h2>
-      <div className="my-2">
+      <HeadingMd>{title}</HeadingMd>
+      <DateInfo>
         Created on {createdAt}.
         {
           updatedAt === createdAt
             ? null
             : `Updated on ${updatedAt}`
         }
-      </div>
+      </DateInfo>
+      <CategoriesList>
+        {categories.map(({ id, name, slug }) => (
+          <CategoryBox key={id} slug={slug}>
+            {name}
+          </CategoryBox>
+        ))}
+      </CategoriesList>
       <div className="whitespace-pre-line">
         {body}
       </div>
