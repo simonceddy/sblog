@@ -1,0 +1,4 @@
+webpack.*.js
+tailwind.config.js
+/public/js/*
+/resources/js/bootstrap.js
