@@ -8,8 +8,7 @@ use Illuminate\Support\Str;
 
 $factory->define(Article::class, function (Faker $faker) {
     return [
-        'id' => Str::uuid(),
-        'title' => $faker->words(3, true),
-        'body' => $faker->paragraphs(3, true)
+        'title' => $faker->words(mt_rand(1, 5), true),
+        'body' => $faker->paragraphs(mt_rand(1, 7), true)
     ];
 });

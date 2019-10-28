@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -14,7 +15,18 @@ class ArticlesTableSeeder extends Seeder
     {
         factory(App\Article::class, 50)->create()->each(
             function (App\Article $article) {
-                $categories = factory(App\Category::class, mt_rand(1, 12))->create();
+                $a = mt_rand(1, 12);
+
+                $categories = new Collection();
+
+                for ($i = 0; $i < $a; $i++) {
+                    $categories[] = App\Category::firstOrCreate(
+                        factory(App\Category::class)->raw()
+                    );
+                }
+
+                // dd($categories);
+
                 $article->categories()->attach($categories);
             }
         );

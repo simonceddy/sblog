@@ -1,0 +1,19 @@
+.link {
+    @apply no-underline block p-2 text-blue-700;
+}
+
+.link:hover, .link.active:hover {
+    @apply text-green-700 border-green-700;
+}
+
+.link:active, .link.active:active {
+    @apply text-purple-700 border-purple-700;
+}
+
+.link:active, .link:hover {
+    @apply underline;
+}
+
+.link.active {
+    @apply text-red-700 border-red-700;
+}

@@ -8,7 +8,6 @@ use Illuminate\Support\Str;
 
 $factory->define(Category::class, function (Faker $faker) {
     return [
-        'id' => Str::uuid(),
-        'name' => $faker->words(3, true),
+        'name' => $faker->words(mt_rand(1, 3), true),
     ];
 });

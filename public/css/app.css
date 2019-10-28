@@ -599,6 +599,50 @@ video {
   height: auto;
 }
 
+.link {
+  text-decoration: none;
+  display: block;
+  padding: 0.5rem;
+  color: #2b6cb0;
+}
+
+.link:hover, .link.active:hover {
+  color: #2f855a;
+  border-color: #2f855a;
+}
+
+.link:active, .link.active:active {
+  color: #6b46c1;
+  border-color: #6b46c1;
+}
+
+.link:active, .link:hover {
+  text-decoration: underline;
+}
+
+.link.active {
+  color: #c53030;
+  border-color: #c53030;
+}
+
+.header-nav-link {
+  border-width: 1px;
+  border-color: #fff;
+}
+
+.header-title {
+  text-shadow: 2px 2px 2px #b1cbe6;
+  color: #2b6cb0;
+}
+
+.header-title:hover {
+  color: #2f855a;
+}
+
+.header-title:active {
+  color: #c53030;
+}
+
 .container {
   width: 100%;
 }
@@ -11399,6 +11443,13 @@ video {
 
 .z-auto {
   z-index: auto;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 }
 
 @media (min-width: 640px) {
