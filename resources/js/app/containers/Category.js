@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import CategoryArticles from '../components/pages/CategoryArticles';
+import LoadingSpinner from '../shared/components/LoadingSpinner';
 
 function Category() {
   const [category, setCategory] = useState(null);
@@ -16,8 +17,7 @@ function Category() {
     fetchData();
   }, []);
 
-  if (!category) return <div>Loading...</div>;
-
+  if (!category) return <LoadingSpinner>Fetching articles for category</LoadingSpinner>;
   // console.log(category);
 
   return (

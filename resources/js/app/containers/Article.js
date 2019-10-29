@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import ViewArticle from '../components/pages/ViewArticle';
+import LoadingSpinner from '../shared/components/LoadingSpinner';
 
 function Article() {
   const [article, setArticle] = useState(null);
@@ -16,7 +17,13 @@ function Article() {
     fetchData();
   }, []);
 
-  if (!article) return <div>Loading...</div>;
+  if (!article) {
+    return (
+      <LoadingSpinner>
+        Fetching article
+      </LoadingSpinner>
+    );
+  }
 
   return (
     <ViewArticle article={article} />

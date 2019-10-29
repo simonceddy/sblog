@@ -6,7 +6,7 @@ function Pagination({
   lastPage,
   baseUrl = '/'
 }) {
-  const firstPageUrl = `${baseUrl}&page=1`;
+  const firstPageUrl = `${baseUrl}?page=1`;
   const next = current < lastPage ? current + 1 : null;
   const previous = current > 1 ? current - 1 : null;
 
@@ -19,14 +19,14 @@ function Pagination({
       <PaginationLink url={firstPageUrl} disabled={previousDisabled}>
         First
       </PaginationLink>
-      <PaginationLink url={`${baseUrl}&page=${previous}`} disabled={previousDisabled}>
+      <PaginationLink url={`${baseUrl}?page=${previous}`} disabled={previousDisabled}>
         Previous
       </PaginationLink>
 
-      <PaginationLink url={`${baseUrl}&page=${next}`} disabled={nextDisabled}>
+      <PaginationLink url={`${baseUrl}?page=${next}`} disabled={nextDisabled}>
         Next
       </PaginationLink>
-      <PaginationLink url={`${baseUrl}&page=${lastPage}`} disabled={nextDisabled}>
+      <PaginationLink url={`${baseUrl}?page=${lastPage}`} disabled={nextDisabled}>
         Last
       </PaginationLink>
       {/* pagination links */}

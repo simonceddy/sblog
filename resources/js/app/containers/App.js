@@ -13,8 +13,8 @@ function App() {
     <Layout>
       <Switch>
         <Route path="/" exact component={Homepage} />
-        <Route path="/categories" exact component={Categories} />
-        <Route path="/articles" exact component={Articles} />
+        <Route path="/categories" component={Categories} />
+        <Route path="/articles" component={Articles} />
         <Route path="/article/:slug" exact component={Article} />
         <Route path="/category/:slug" exact component={Category} />
         {/* <Route path="/login" exact component={Login} /> */}

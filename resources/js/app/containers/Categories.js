@@ -1,45 +1,47 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import CategoryList from '../components/CategoryList';
-// import { useLocation } from 'react-router-dom';
+import LoadingSpinner from '../shared/components/LoadingSpinner';
+import Pagination from '../components/Pagination/index';
 
 function Categories() {
   const [data, setData] = useState(null);
 
-  // const { search, pathname } = useLocation();
+  const { search, pathname } = useLocation();
 
   // TODO validate url params
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await window.axios.get('/api/category');
+      const result = await window.axios.get(`/api/category?${search}`);
       // console.log(result.data);
       setData(result.data);
     };
     fetchData();
-  }, []);
+  }, [search]);
 
   if (!data) {
     return (
-      <div>
-        Loading Results...
-      </div>
+      <LoadingSpinner>
+        Fetching categories
+      </LoadingSpinner>
     );
   }
 
-  /* const {
-    data: items,
-    from,
+  const {
+    data: categories,
+    /* from,
     to,
-    total,
+    total, */
     current_page: current,
     last_page: lastPage
-  } = data; */
+  } = data;
 
   /* const query = new URLSearchParams(search);
   query.delete('page');
   const baseQuery = query.toString(); */
 
-  if (data.length < 1) {
+  if (categories.length < 1) {
     return (
       <div>
         No results were found.
@@ -48,10 +50,14 @@ function Categories() {
   }
 
   return (
-    <div>
-      Categoies
-      <CategoryList categories={data} />
-    </div>
+    <>
+      <Pagination
+        current={current}
+        lastPage={lastPage}
+        baseUrl={pathname}
+      />
+      <CategoryList categories={categories} />
+    </>
   );
 }
 

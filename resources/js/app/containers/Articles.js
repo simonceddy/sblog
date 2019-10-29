@@ -1,45 +1,47 @@
 import React, { useState, useEffect } from 'react';
-// import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import ArticleList from '../components/ArticleList';
+import LoadingSpinner from '../shared/components/LoadingSpinner';
+import Pagination from '../components/Pagination/index';
 
 function Articles() {
   const [data, setData] = useState(null);
 
-  // const { search, pathname } = useLocation();
+  const { search, pathname } = useLocation();
 
   // TODO validate url params
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await window.axios.get('/api/article');
+      const result = await window.axios.get(`/api/article?${search}`);
       // console.log(result.data);
       setData(result.data);
     };
     fetchData();
-  }, []);
+  }, [search]);
 
   if (!data) {
     return (
-      <div>
-        Loading articles...
-      </div>
+      <LoadingSpinner>
+        Fetching articles
+      </LoadingSpinner>
     );
   }
 
-  /* const {
-    data: items,
-    from,
+  const {
+    data: articles,
+    /* from,
     to,
-    total,
+    total, */
     current_page: current,
     last_page: lastPage
-  } = data; */
+  } = data;
 
   /* const query = new URLSearchParams(search);
   query.delete('page');
   const baseQuery = query.toString(); */
 
-  if (data.length < 1) {
+  if (articles.length < 1) {
     return (
       <div>
         No articles were found.
@@ -48,10 +50,14 @@ function Articles() {
   }
 
   return (
-    <div>
-      Articles
-      <ArticleList articles={data} />
-    </div>
+    <>
+      <Pagination
+        current={current}
+        lastPage={lastPage}
+        baseUrl={pathname}
+      />
+      <ArticleList articles={articles} />
+    </>
   );
 }
 
