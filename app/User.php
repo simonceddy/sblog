@@ -12,15 +12,6 @@ class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
-    public $incrementing = false;
-
-    /**
-     * ID type.
-     *
-     * @var string
-     */
-    protected $keyType = 'string';
-
     /**
      * The attributes that are mass assignable.
      *
@@ -66,7 +57,7 @@ class User extends Authenticatable implements JWTSubject
         parent::boot();
 
         static::creating(function ($instance) {
-            $instance->id = Str::uuid();
+            $instance->uuid = Str::uuid();
         });
     }
 }

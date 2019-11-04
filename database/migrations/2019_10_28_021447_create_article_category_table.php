@@ -15,8 +15,8 @@ class CreateArticleCategoryTable extends Migration
     {
         Schema::create('article_category', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->uuid('article_id');
-            $table->uuid('category_id');
+            $table->unsignedBigInteger('article_id');
+            $table->unsignedBigInteger('category_id');
             $table->timestamps();
 
             $table->foreign('article_id')->references('id')->on('articles');

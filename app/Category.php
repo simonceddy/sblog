@@ -7,15 +7,6 @@ use Illuminate\Support\Str;
 
 class Category extends Model
 {
-    public $incrementing = false;
-
-    /**
-     * ID type.
-     *
-     * @var string
-     */
-    protected $keyType = 'string';
-
     public function articles()
     {
         return $this->belongsToMany(Article::class);
@@ -39,7 +30,7 @@ class Category extends Model
         parent::boot();
 
         static::creating(function ($instance) {
-            $instance->id = Str::uuid();
+            $instance->uuid = Str::uuid();
         });
     }
 }

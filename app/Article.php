@@ -7,15 +7,6 @@ use Illuminate\Support\Str;
 
 class Article extends Model
 {
-    public $incrementing = false;
-
-    /**
-     * ID type.
-     *
-     * @var string
-     */
-    protected $keyType = 'string';
-
     protected $with = ['categories'];
 
     public function categories()
@@ -41,7 +32,7 @@ class Article extends Model
         parent::boot();
 
         static::creating(function ($instance) {
-            $instance->id = Str::uuid();
+            $instance->uuid = Str::uuid();
         });
     }
 }
