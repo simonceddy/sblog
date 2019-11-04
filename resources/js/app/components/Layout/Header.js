@@ -1,5 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
+// import { FiLogIn as LoginIcon } from 'react-icons/all';
 import HeaderNavLink from '../../shared/components/HeaderNavLink';
 
 function Header() {
@@ -10,6 +11,12 @@ function Header() {
         <HeaderNavLink exact to="/">Home</HeaderNavLink>
         <HeaderNavLink exact to="/articles">Articles</HeaderNavLink>
         <HeaderNavLink exact to="/categories">Categories</HeaderNavLink>
+      </span>
+      <span>
+        {/* <LoginIcon size={32} /> */}
+        <Link to="/login">
+          Sign in
+        </Link>
       </span>
     </div>
   );
