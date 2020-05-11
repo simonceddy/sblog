@@ -13,6 +13,6 @@
 
 // Route::redirect('/', '/app', 301);
 
-Route::get('/{path?}', 'FrontController')->where('path', '.*');
+Route::get('/{path?}', 'FrontController');
 
 // Route::fallback('FrontController');

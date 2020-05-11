@@ -57,6 +57,11 @@ function Articles() {
         baseUrl={pathname}
       />
       <ArticleList articles={articles} />
+      <Pagination
+        current={current}
+        lastPage={lastPage}
+        baseUrl={pathname}
+      />
     </>
   );
 }

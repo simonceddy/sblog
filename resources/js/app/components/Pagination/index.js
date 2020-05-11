@@ -14,23 +14,24 @@ function Pagination({
   const nextDisabled = next === null;
 
   return (
-    <div className="flex flex-row border border-black p-3 w-full">
-      <span className="mr-2">Page {current} of {lastPage}</span>
-      <PaginationLink url={firstPageUrl} disabled={previousDisabled}>
-        First
-      </PaginationLink>
-      <PaginationLink url={`${baseUrl}?page=${previous}`} disabled={previousDisabled}>
-        Previous
-      </PaginationLink>
+    <div className="flex flex-row border border-black p-3 w-full items-center justify-between">
+      <div className="flex flex-row items-center justify-between">
+        <PaginationLink url={firstPageUrl} disabled={previousDisabled}>
+          First
+        </PaginationLink>
+        <PaginationLink url={`${baseUrl}?page=${previous}`} disabled={previousDisabled}>
+          Previous
+        </PaginationLink>
 
-      <PaginationLink url={`${baseUrl}?page=${next}`} disabled={nextDisabled}>
-        Next
-      </PaginationLink>
-      <PaginationLink url={`${baseUrl}?page=${lastPage}`} disabled={nextDisabled}>
-        Last
-      </PaginationLink>
+        <PaginationLink url={`${baseUrl}?page=${next}`} disabled={nextDisabled}>
+          Next
+        </PaginationLink>
+        <PaginationLink url={`${baseUrl}?page=${lastPage}`} disabled={nextDisabled}>
+          Last
+        </PaginationLink>
+      </div>
       {/* pagination links */}
-      {}
+      <span className="mr-2">Page {current} of {lastPage}</span>
     </div>
   );
 }
