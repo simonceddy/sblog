@@ -2,11 +2,14 @@
 
 namespace App;
 
+use App\Support\GeneratesUuid;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
+// use Illuminate\Support\Str;
 
 class Article extends Model
 {
+    use GeneratesUuid;
+
     protected $with = ['categories'];
 
     public function categories()
@@ -22,17 +25,5 @@ class Article extends Model
     public function getRouteKeyName()
     {
         return 'slug';
-    }
-
-    /**
-     * Boot the Model.
-     */
-    public static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($instance) {
-            $instance->uuid = Str::uuid();
-        });
     }
 }

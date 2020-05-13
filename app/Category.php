@@ -1,12 +1,13 @@
 <?php
-
 namespace App;
 
+use App\Support\GeneratesUuid;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
 class Category extends Model
 {
+    use GeneratesUuid;
+
     public function articles()
     {
         return $this->belongsToMany(Article::class);
@@ -20,17 +21,5 @@ class Category extends Model
     public function getRouteKeyName()
     {
         return 'slug';
-    }
-
-    /**
-     * Boot the Model.
-     */
-    public static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($instance) {
-            $instance->uuid = Str::uuid();
-        });
     }
 }
