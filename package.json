@@ -10,18 +10,18 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "@babel/preset-react": "^7.10.1",
+        "@babel/preset-react": "^7.10.4",
         "babel-eslint": "^10.1.0",
         "cross-env": "^5.1",
         "eslint": "^6.8.0",
         "eslint-config-airbnb": "^18.2.0",
-        "eslint-plugin-import": "^2.21.2",
-        "eslint-plugin-jsx-a11y": "^6.3.0",
-        "eslint-plugin-react": "^7.20.0",
+        "eslint-plugin-import": "^2.22.0",
+        "eslint-plugin-jsx-a11y": "^6.3.1",
+        "eslint-plugin-react": "^7.20.3",
         "eslint-plugin-react-hooks": "^1.7.0",
         "laravel-mix": "^4.0.7",
         "resolve-url-loader": "^2.3.1",
-        "sass": "^1.26.8",
+        "sass": "^1.26.9",
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
