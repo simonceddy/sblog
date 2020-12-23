@@ -13,17 +13,18 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        if (!Schema::connection('users')->hasTable('users')) {
-            Schema::connection('users')->create('users', function (Blueprint $table) {
-                $table->bigIncrements('id');
-                $table->uuid('uuid');
-                $table->string('name');
-                $table->string('username')->unique();
-                $table->string('password');
-                $table->rememberToken();
-                $table->timestamps();
-            });
+        if (Schema::connection('users')->hasTable('users')) {
+            $this->down();
         }
+        Schema::connection('users')->create('users', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->uuid('uuid');
+            $table->string('name');
+            $table->string('username')->unique();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+        });
     }
 
     /**

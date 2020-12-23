@@ -1,9 +1,11 @@
 <?php
 
-use Illuminate\Database\Seeder;
-// use Illuminate\Support\Str;
+namespace Database\Seeders;
 
-class UsersTableSeeder extends Seeder
+use App\User;
+use Illuminate\Database\Seeder;
+
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,14 +14,14 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        // factory(App\User::class)->create();
-
-        $simon = new App\User([
+        (new User([
             'name' => 'Simon',
             'username' => 'simon',
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        ]);
-    
-        $simon->save();
+        ]))->save();
+
+        User::factory()
+            ->times(4)
+            ->create();
     }
 }

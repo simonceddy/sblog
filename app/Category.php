@@ -2,11 +2,15 @@
 namespace App;
 
 use App\Support\GeneratesUuid;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\{
+    Factories\HasFactory,
+    Model
+};
 
 class Category extends Model
 {
     use GeneratesUuid;
+    use HasFactory;
 
     public function articles()
     {

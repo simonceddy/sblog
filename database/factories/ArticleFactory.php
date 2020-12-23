@@ -1,17 +1,32 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
 use App\Article;
-use Faker\Generator as Faker;
-use Illuminate\Support\Carbon;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-$factory->define(Article::class, function (Faker $faker) {
-    $date = $faker->unique()->date('Y-m-d H:i:s');
-    return [
-        'title' => $title = $faker->words(mt_rand(1, 5), true),
-        'body' => $faker->paragraphs(mt_rand(1, 7), true),
-        'slug' => Str::slug("{$title} {$date}")
-    ];
-});
+class ArticleFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Article::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        $date = $this->faker->unique()->date('Y-m-d H:i:s');
+        return [
+            'title' => $title = $this->faker->words(mt_rand(1, 5), true),
+            'body' => $this->faker->paragraphs(mt_rand(1, 7), true),
+            'slug' => Str::slug("{$title} {$date}")
+        ];
+    }
+}

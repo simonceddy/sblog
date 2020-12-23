@@ -1,4 +1,5 @@
 <?php
+namespace Database\Seeders;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Seeder;
@@ -14,14 +15,14 @@ class ArticlesTableSeeder extends Seeder
     public function run()
     {
         factory(App\Article::class, 250)->create()->each(
-            function (App\Article $article) {
+            function (\App\Article $article) {
                 $a = mt_rand(1, 12);
 
                 $categories = new Collection();
 
                 for ($i = 0; $i < $a; $i++) {
-                    $categories[] = App\Category::firstOrCreate(
-                        factory(App\Category::class)->raw()
+                    $categories[] = \App\Category::firstOrCreate(
+                        factory(\App\Category::class)->raw()
                     );
                 }
 
